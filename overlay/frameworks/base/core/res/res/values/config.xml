@@ -87,6 +87,7 @@
     <integer name="config_screenBrightnessSettingMaximum">255</integer>
     <integer name="config_screenBrightnessSettingDefault">124</integer>
     <integer name="config_screenBrightnessDim">59</integer>
+    <integer name="config_buttonBrightnessSettingDefault">0</integer>
     <bool name="config_hotswapCapable">true</bool>
     <string-array translatable="false" name="config_tether_usb_regexs">
         <item>"usb\\d"</item>
