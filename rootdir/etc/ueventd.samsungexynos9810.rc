@@ -148,7 +148,7 @@
 /dev/ramdump_memshare     0660   system     radio
 
 # dev ril bridge
-/sys/class/dev_ril_bridge/dev_ril_bridge    notify      0660    system  radio
+/dev/drb	          0660   system     radio
 
 # Vision (VPU, SCORE)
 /dev/vertex0              0660   media      media
