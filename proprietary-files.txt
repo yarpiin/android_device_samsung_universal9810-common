@@ -4,3 +4,8 @@
 # AptX
 lib64/libaptX_encoder.so
 lib64/libaptXHD_encoder.so
+
+# Ringtones
+system/media/audio/notifications/Skyline.ogg
+system/media/audio/ringtones/Morning_Glory.ogg
+system/media/audio/ringtones/Over_the_Horizon.ogg
