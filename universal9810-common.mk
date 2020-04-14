@@ -78,9 +78,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.9810
 
-# SamsungDoze
-PRODUCT_PACKAGES += \
-    SamsungDoze
 
 # Keylayout
 PRODUCT_COPY_FILES += \
