@@ -65,6 +65,43 @@
         <item>lte:1048576,3145728,4194304,524288,1572864,2097152</item>
     </string-array>
 
+    <!-- List of regexpressions describing the interface (if any) that represent tetherable
+         USB interfaces.  If the device doesn't want to support tething over USB this should
+         be empty.  An example would be "usb.*" -->
+    <string-array translatable="false" name="config_tether_usb_regexs">
+        <item>"usb\\d"</item>
+        <item>"rndis\\d"</item>
+    </string-array>
+
+    <!-- List of regexpressions describing the interface (if any) that represent tetherable
+         Wifi interfaces.  If the device doesn't want to support tethering over Wifi this
+         should be empty.  An example would be "softap.*" -->
+    <string-array translatable="false" name="config_tether_wifi_regexs">
+        <item>"wlan0"</item>
+        <item>"swlan0"</item>
+        <item>"softap.*"</item>
+    </string-array>
+
+    <!-- List of regexpressions describing the interface (if any) that represent tetherable
+         bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
+         should be empty. -->
+    <string-array translatable="false" name="config_tether_bluetooth_regexs">
+        <item>"bt-pan"</item>
+    </string-array>
+
+    <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
+    <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
+    <!== [0,1,5,7] for TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_HIPRI and TYPE_BLUETOOTH -->
+    <integer-array translatable="false" name="config_tether_upstream_types">
+        <item>0</item>
+        <item>1</item>
+        <item>5</item>
+        <item>7</item>
+    </integer-array>
+
+    <!-- The default iface on which to monitor data use -->
+    <string name="config_datause_iface" translatable="false">rmnet4</string>
+
     <!-- Boolean indicating if restoring network selection should be skipped -->
     <!-- The restoring is handled by modem if it is true-->
     <bool translatable="false" name="skip_restoring_network_selection">true</bool>
@@ -155,6 +192,7 @@
         <item>"/apex/com.android.runtime/javalib/core-oj.jar"</item>
         <item>"/apex/com.android.runtime/javalib/core-libart.jar"</item>
         <item>"/apex/com.android.media/javalib/updatable-media.jar"</item>
+        <item>"/system/lib64/libsurfaceflinger.so"</item>
     </string-array>
 
     <!-- True if camera app should be pinned via Pinner Service -->
@@ -170,46 +208,9 @@
          The default is false. -->
     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
 
-    <!-- List of regexpressions describing the interface (if any) that represent tetherable
-         USB interfaces.  If the device doesn't want to support tething over USB this should
-         be empty.  An example would be "usb.*" -->
-    <string-array translatable="false" name="config_tether_usb_regexs">
-        <item>"usb\\d"</item>
-        <item>rndis\\d</item>
-    </string-array>
-
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
          autodetected from the Configuration. -->
     <bool name="config_showNavigationBar">true</bool>
-
-    <!-- List of regexpressions describing the interface (if any) that represent tetherable
-         Wifi interfaces.  If the device doesn't want to support tethering over Wifi this
-         should be empty.  An example would be "softap.*" -->
-    <string-array translatable="false" name="config_tether_wifi_regexs">
-        <item>"wlan0"</item>
-        <item>"swlan0"</item>
-        <item>"softap.*"</item>
-    </string-array>
-
-    <!-- List of regexpressions describing the interface (if any) that represent tetherable
-         bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
-         should be empty. -->
-    <string-array translatable="false" name="config_tether_bluetooth_regexs">
-        <item>bt-pan</item>
-    </string-array>
-
-    <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
-    <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
-    <!== [0,1,5,7] for TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_HIPRI and TYPE_BLUETOOTH -->
-    <integer-array translatable="false" name="config_tether_upstream_types">
-        <item>0</item>
-        <item>1</item>
-        <item>5</item>
-        <item>7</item>
-    </integer-array>
-
-    <!-- The default iface on which to monitor data use -->
-    <string name="config_datause_iface" translatable="false">rmnet4</string>
 
     <!-- Flag indicating whether we should enable the automatic brightness in Settings.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
@@ -219,6 +220,14 @@
          For this time after the screen turns on, the Power Manager
          will not debounce light sensor readings -->
     <integer name="config_lightSensorWarmupTime">200</integer>
+
+    <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
+         for debouncing the light sensor.  Different constants are used to debounce the light sensor
+         when adapting to brighter or darker environments.  This parameter controls how quickly
+         brightness changes occur in response to an observed change in light level that exceeds the
+         hysteresis threshold. -->
+    <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">6000</integer>
 
     <!-- If this is true, the screen will fade off. -->
     <bool name="config_animateScreenLights">false</bool>
@@ -316,8 +325,8 @@
     <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
     
     <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
-    <bool name="config_displayBlanksAfterDoze">false</bool>
-    
+    <bool name="config_displayBlanksAfterDoze">true</bool>
+
     <!-- Doze: should the TYPE_PICK_UP_GESTURE sensor be used as a pulse signal. -->
     <bool name="config_dozePulsePickup">true</bool>
 
@@ -387,6 +396,9 @@
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
 
+    <!-- Is the device capable of hot swapping an UICC Card -->
+    <bool name="config_hotswapCapable">true</bool>
+
     <!-- Permit doze mode to operate -->
     <bool name="config_enableAutoPowerModes">true</bool>
 
@@ -445,8 +457,5 @@
          running in WAL mode.
          Choices are: FULL, NORMAL, OFF. -->
     <string name="db_wal_sync_mode" translatable="false">OFF</string>
-
-    <!-- Flag indicating whether we should enable smart battery. -->
-    <bool name="config_smart_battery_available">true</bool>
 
 </resources>
