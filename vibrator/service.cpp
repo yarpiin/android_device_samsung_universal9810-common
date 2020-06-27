@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2020 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ int main() {
 
     vibrator = new Vibrator();
     if (vibrator == nullptr) {
-        LOG(ERROR) << "Can not create an instance of ExynosVibrator HAL IVibrator, "
+        LOG(ERROR) << "Can not create an instance of Vibrator HAL IVibrator, "
                       "exiting.";
         goto shutdown;
     }
@@ -51,11 +51,11 @@ int main() {
 
     status = vibrator->registerAsService();
     if (status != OK) {
-        LOG(ERROR) << "Could not register service for ExynosVibrator HAL";
+        LOG(ERROR) << "Could not register service for Vibrator HAL";
         goto shutdown;
     }
 
-    LOG(INFO) << "ExynosVibrator HAL service is Ready.";
+    LOG(INFO) << "Vibrator HAL service is Ready.";
     joinRpcThreadpool();
 
 shutdown:

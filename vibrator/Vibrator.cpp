@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2019-2020 The LineageOS Project
- * Copyright (C) 2020      Andreas Schneider <asn@cryptomilk.org>
+ * Copyright (C) 2020 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,15 +27,6 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
-
-#define INTENSITY_MIN 1000
-#define INTENSITY_MAX 10000
-#define INENSITY_DEFAULT INTENSITY_MAX
-
-#define CLICK_TIMING_MS 20
-
-#define VIBRATOR_TIMEOUT_PATH "/sys/class/timed_output/vibrator/enable"
-#define VIBRATOR_INTENSITY_PATH "/sys/class/timed_output/vibrator/intensity"
 
 namespace android {
 namespace hardware {
@@ -66,20 +56,20 @@ static Return<Status> writeNode(const std::string& path, const T& value) {
     return Status::OK;
 }
 
-static bool doesNodeExist(const std::string& path) {
-    std::ifstream f(path.c_str());
+static bool nodeExists(const std::string& path) {
+    std::ofstream f(path.c_str());
     return f.good();
 }
 
 Vibrator::Vibrator() {
     bool ok;
 
-    ok = doesNodeExist(VIBRATOR_TIMEOUT_PATH);
+    ok = nodeExists(VIBRATOR_TIMEOUT_PATH);
     if (ok) {
         mIsTimedOutVibriator = true;
     }
 
-    ok = doesNodeExist(VIBRATOR_INTENSITY_PATH);
+    ok = nodeExists(VIBRATOR_INTENSITY_PATH);
     if (ok) {
         mhasTimedOutIntensity = true;
     }
@@ -168,8 +158,8 @@ Return<void> Vibrator::perform(Effect effect, EffectStrength strength, perform_c
     uint8_t amplitude;
     uint32_t ms;
 
-    LOG(DEBUG) << "perform effect: " << effectToName(effect)
-               << ", strength: " << effectStrengthToName(strength);
+    LOG(DEBUG) << "perform effect: " << toString(effect)
+               << ", strength: " << toString(strength);
 
     amplitude = strengthToAmplitude(strength, &status);
     if (status != Status::OK) {
@@ -260,14 +250,6 @@ uint32_t Vibrator::effectToMs(Effect effect, Status* status) {
 
     *status = Status::UNSUPPORTED_OPERATION;
     return 0;
-}
-
-const std::string Vibrator::effectToName(Effect effect) {
-    return toString(effect);
-}
-
-const std::string Vibrator::effectStrengthToName(EffectStrength strength) {
-    return toString(strength);
 }
 
 }  // namespace implementation

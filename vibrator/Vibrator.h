@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2019-2020 The LineageOS Project
- * Copyright (C) 2020      Andreas Schneider <asn@cryptomilk.org>
+ * Copyright (C) 2020 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +21,15 @@
 #include <hidl/Status.h>
 
 #include <fstream>
+
+#define INTENSITY_MIN 1000
+#define INTENSITY_MAX 10000
+#define INENSITY_DEFAULT INTENSITY_MAX
+
+#define CLICK_TIMING_MS 20
+
+#define VIBRATOR_TIMEOUT_PATH "/sys/class/timed_output/vibrator/enable"
+#define VIBRATOR_INTENSITY_PATH "/sys/class/timed_output/vibrator/intensity"
 
 namespace android {
 namespace hardware {
@@ -67,10 +75,6 @@ class Vibrator : public IVibrator {
     static uint32_t effectToMs(Effect effect, Status* status);
     static uint8_t strengthToAmplitude(EffectStrength strength, Status* status);
 
-    static const std::string effectToName(Effect effect);
-    static const std::string effectStrengthToName(EffectStrength effect);
-
-  private:
     bool mEnabled{false};
     uint8_t mAmplitude{UINT8_MAX};
     bool mExternalControl{false};
