@@ -35,3 +35,9 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.config.notification_sound=Twinkle.ogg \
     ro.config.alarm_alert=Cuckoo_clock.ogg \
     ro.config.vc_call_vol_steps=7
+
+# luetooth
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.bluetooth.a2dp_offload.supported=false \
+    persist.bluetooth.a2dp_offload.disabled=true \
+    vendor.audio.feature.a2dp_offload.enable=false
