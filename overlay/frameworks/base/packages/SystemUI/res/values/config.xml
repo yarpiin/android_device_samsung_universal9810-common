@@ -22,7 +22,7 @@
 <resources>
 
     <!-- The number of columns in the QuickSettings -->
-    <integer name="quick_settings_num_columns">4</integer>
+    <integer name="quick_settings_num_columns">3</integer>
     
     <!-- Doze: does this device support STATE_DOZE?
          The display is dozing in a low power state; it is still on but is
