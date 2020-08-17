@@ -80,6 +80,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lineage.livedisplay@2.0-service.9810
 
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.3-service.9810
+
+# Device settings
+PRODUCT_PACKAGES += \
+    devicesettings 
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.1-service.9810
