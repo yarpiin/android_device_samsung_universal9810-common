@@ -46,7 +46,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap
+    CameraGo
 
 # fastbootd
 PRODUCT_PACKAGES += \
@@ -107,7 +107,7 @@ PRODUCT_PACKAGES += \
 # Preopt
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     Settings \
-    Snap
+    CameraGo
 
 # Soong
 PRODUCT_SOONG_NAMESPACES += \
