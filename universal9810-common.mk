@@ -56,7 +56,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.recovery.samsungexynos9810.rc
 
-
 # LPM
 PRODUCT_PACKAGES += \
     libsuspend
@@ -79,10 +78,6 @@ PRODUCT_PACKAGES += \
 # LiveDisplay
 PRODUCT_PACKAGES += \
     lineage.livedisplay@2.0-service.9810
-
-# Trust
-PRODUCT_PACKAGES += \
-    lineage.trust@1.0-service
 
 # Vibrator
 PRODUCT_PACKAGES += \
