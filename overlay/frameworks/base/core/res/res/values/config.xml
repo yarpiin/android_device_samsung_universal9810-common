@@ -250,23 +250,42 @@
          Zone N:        array[N - 1] <= LUX < array[N]
          Zone N + 1     array[N] <= LUX < infinity
          Must be overridden in platform specific overlays -->
-
-   <integer-array name="config_autoBrightnessLevels">
-
-        <item>10</item>        
-        <item>20</item>
-        <item>40</item>
+    <integer-array name="config_autoBrightnessLevels">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>10</item>
+        <item>30</item>
+        <item>50</item>
         <item>100</item>
-        <item>325</item>
-        <item>600</item>
-        <item>1250</item>
-        <item>2200</item>
+        <item>200</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>2999</item>
+        <item>3000</item>
+        <item>3999</item>
         <item>4000</item>
+        <item>4999</item>
+        <item>5000</item>
+        <item>9999</item>
         <item>10000</item>
+        <item>19999</item>
         <item>20000</item>
+        <item>29999</item>
         <item>30000</item>
+        <item>39999</item>
         <item>40000</item>
-
+        <item>49999</item>
+        <item>50000</item>
+        <item>59999</item>
+        <item>60000</item>
+        <item>79999</item>
+        <item>80000</item>
+        <item>99999</item>
+        <item>100000</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -275,21 +294,42 @@
          This must be overridden in platform specific overlays -->
 
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>10</item>   <!--  0-10 -->
-        <item>20</item>   <!-- 10-20 -->
-        <item>35</item>   <!-- 20-40 -->
-        <item>55</item>   <!-- 40-100 -->
-        <item>65</item>   <!-- 100-325 -->
-        <item>75</item>   <!-- 325-600 -->
-        <item>100</item>  <!-- 600-1250 -->
-        <item>115</item>  <!-- 1250-2200 -->
-        <item>125</item>  <!-- 2200-4000 -->
-        <item>180</item>  <!-- 4000-10000 -->
-        <item>200</item>  <!-- 10000-20000 -->
-        <item>220</item>  <!-- 20000-30000 -->
-        <item>235</item>  <!-- 30000-40000 -->
-        <item>250</item>  <!-- 40000+ -->
-
+        <item>22</item>
+        <item>25</item>
+        <item>28</item>
+        <item>33</item>
+        <item>35</item>
+        <item>37</item>
+        <item>49</item>
+        <item>64</item>
+        <item>64</item>
+        <item>65</item>
+        <item>67</item>
+        <item>72</item>
+        <item>98</item>
+        <item>145</item>
+        <item>145</item>
+        <item>163</item>
+        <item>163</item>
+        <item>172</item>
+        <item>172</item>
+        <item>181</item>
+        <item>181</item>
+        <item>191</item>
+        <item>191</item>
+        <item>200</item>
+        <item>200</item>
+        <item>209</item>
+        <item>209</item>
+        <item>218</item>
+        <item>218</item>
+        <item>227</item>
+        <item>227</item>
+        <item>236</item>
+        <item>236</item>
+        <item>245</item>
+        <item>245</item>
+        <item>255</item>
     </integer-array>
 
     <!-- Minimum screen brightness setting allowed by the power manager.
