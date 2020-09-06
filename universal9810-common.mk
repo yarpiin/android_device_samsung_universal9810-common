@@ -46,7 +46,8 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    CameraGo
+    ZGcam \
+    Snap
 
 # fastbootd
 PRODUCT_PACKAGES += \
