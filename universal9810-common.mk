@@ -73,7 +73,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap
+    CameraGo
 
 # Net
 PRODUCT_PACKAGES += \
