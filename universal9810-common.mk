@@ -14,8 +14,6 @@
 # limitations under the License.
 #
 
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-
 # VNDK
 PRODUCT_EXTRA_VNDK_VERSIONS := 29
 
@@ -95,13 +93,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     lineage.livedisplay@2.0-service.9810
 
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-aosp
+
 # Touch
 PRODUCT_PACKAGES += \
     lineage.touch@1.0-service.9810
-
-# Trust
-PRODUCT_PACKAGES += \
-    lineage.trust@1.0-service
 
 # Lights
 PRODUCT_COPY_FILES += \
