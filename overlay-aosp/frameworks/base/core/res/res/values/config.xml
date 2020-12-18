@@ -53,4 +53,7 @@
     <string name="config_SmartChargingSysfsNode" translatable="false">/sys/class/power_supply/battery/batt_slate_mode</string>
     <string name="config_SmartChargingSuspendValue" translatable="false">1</string>
     <string name="config_SmartChargingResumeValue" translatable="false">0</string>
+
+    <!-- Flag indicating whether we should enable the adaptive sleep.-->
+    <bool name="config_adaptive_sleep_available">true</bool>
 </resources>
