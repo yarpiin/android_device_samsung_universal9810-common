@@ -10,12 +10,16 @@ on init
     chown system system /sys/class/timed_output/vibrator/intensity
     chown system system /sys/class/timed_output/vibrator/force_touch_intensity
     write /sys/class/timed_output/vibrator/force_touch_intensity 10000
-    
+
     # GPU
     chown radio system /sys/kernel/gpu/gpu_max_clock
     chown radio system /sys/kernel/gpu/gpu_min_clock
     chmod 0666 /sys/kernel/gpu/gpu_max_clock
     chmod 0666 /sys/kernel/gpu/gpu_min_clock
+
+# Smart Charging
+    chown system system /sys/class/power_supply/battery/batt_slate_mode
+    chmod 0666 /sys/class/power_supply/battery/batt_slate_mode
 
 # Charger
 service charger /system/bin/charger
